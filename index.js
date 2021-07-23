@@ -11,15 +11,21 @@ var session = ping.createSession(sessionConfig);
 
 // const target = 'http://onet.pl';
 const target = '192.168.1.1';
-setInterval(() => {
-    pingAddress(target);
-}, 5000);
+const domTarget = document.querySelector('.js-target');
+
+function setStatus(targetName, status) {
+    domTarget && domTarget.innerHTML(`${targetName} : ${status}`);
+}
 
 function pingAddress(target) {
     session.pingHost(target, (error, target) => {
-        console.clear();
         error
-            ? console.log(target + ': ' + error.toString())
-            : console.log(target + ': [Alive]');
+            ? setStatus(target, error.toString())
+            : setStatus(target, [Alive]);
     });
 }
+
+console.log('http://localhost:8080');
+setInterval(() => {
+    pingAddress(target);
+}, 5000);
