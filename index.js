@@ -11,11 +11,6 @@ var session = ping.createSession(sessionConfig);
 
 // const target = 'http://onet.pl';
 const target = '192.168.1.1';
-const domTarget = document.querySelector('.js-target');
-
-function setStatus(targetName, status) {
-    domTarget && domTarget.innerHTML(`${targetName} : ${status}`);
-}
 
 function pingAddress(target) {
     session.pingHost(target, (error, target) => {
