@@ -13,13 +13,13 @@ var session = ping.createSession(sessionConfig);
 const target = '192.168.1.1';
 setInterval(() => {
     pingAddress(target);
-}, 3000);
+}, 5000);
 
 function pingAddress(target) {
     session.pingHost(target, (error, target) => {
         console.clear();
         error
             ? console.log(target + ': ' + error.toString())
-            : console.log(target + ': Alive');
+            : console.log(target + ': [Alive]');
     });
 }
