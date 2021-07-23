@@ -1,4 +1,4 @@
-let ping = require('net-ping')
+let ping = require('net-ping');
 const sessionConfig = {
     // networkProtocol: ping.NetworkProtocol.IPv4,
     // packetSize: 16,
@@ -6,19 +6,20 @@ const sessionConfig = {
     // sessionId: (process.pid % 65535),
     timeout: 2000,
     // ttl: 128
-}
-var session = ping.createSession(sessionConfig)
+};
+var session = ping.createSession(sessionConfig);
 
 // const target = 'http://onet.pl';
-const target = '192.168.1.1'
+const target = '192.168.1.1';
 setInterval(() => {
-    pingAddress(target)
-}, 3000)
+    pingAddress(target);
+}, 3000);
 
 function pingAddress(target) {
-    session.pingHost(target, function (error, target) {
+    session.pingHost(target, (error, target) => {
+        console.clear();
         error
             ? console.log(target + ': ' + error.toString())
-            : console.log(target + ': Alive')
-    })
+            : console.log(target + ': Alive');
+    });
 }
